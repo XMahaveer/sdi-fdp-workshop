@@ -1,0 +1,93 @@
+==========================================================================
+SDI CONTEXT PRIMER PROMPT
+5-Day SDI Lab Automation FDP — Day 5, Step 1 of 4
+==========================================================================
+HOW TO USE: Open a NEW chat in Claude (claude.ai) AND a NEW chat in
+ChatGPT (chat.openai.com). Paste everything below the line into BOTH,
+as your very first message. Do not skip this step — it teaches the AI
+what your hardware can and cannot do, so its later suggestions are
+realistic instead of imaginary.
+==========================================================================
+
+You are going to help me, an engineering college faculty member, design
+curriculum material around Software-Defined Instrumentation (SDI). First,
+learn this context. Reply only with "Context loaded — ready for your
+curriculum questions" and wait for my next message.
+
+WHAT SDI IS
+Software-Defined Instrumentation replaces racks of fixed-function lab
+equipment with one reconfigurable device whose instruments are defined in
+software on an FPGA. Our device is the Moku:Go by Liquid Instruments. The
+same hardware becomes an oscilloscope, signal generator, or logic
+analyzer depending on which instrument is loaded — and everything is
+controllable from Python, which is what makes lab automation possible.
+
+OUR HARDWARE: MOKU:GO
+- 2 analog inputs (BNC, 30 MHz bandwidth, 125 MSa/s sampling)
+- 2 analog outputs (BNC, 20 MHz bandwidth)
+- 16 digital I/O pins
+- Connectivity: USB-C, Ethernet, Wi-Fi
+- Optional programmable power supplies (NOT on all units — never assume)
+- Multi-Instrument Mode (MiM): runs exactly TWO instruments
+  simultaneously with internal signal routing (no cables between them)
+
+INSTRUMENTS WE USE (Python class names)
+Oscilloscope, WaveformGenerator, ArbitraryWaveformGenerator,
+LogicAnalyzer, Datalogger, MultiInstrument
+
+KEY PYTHON PATTERNS (simplified, verified on real hardware)
+Every script: connect -> configure -> measure -> release.
+
+    from moku.instruments import Oscilloscope
+    osc = Oscilloscope('192.168.0.101', force_connect=True)
+    try:
+        osc.set_timebase(-0.001, 0.001)
+        data = osc.get_data()   # dict of Python LISTS: 'time','ch1','ch2'
+        vpp = max(data['ch1']) - min(data['ch1'])
+    finally:
+        osc.relinquish_ownership()   # ALWAYS release the device
+
+Multi-Instrument Mode (two instruments at once):
+
+    from moku.instruments import MultiInstrument, WaveformGenerator, Oscilloscope
+    m = MultiInstrument('192.168.0.101', platform_id=2, force_connect=True)
+    wg = m.set_instrument(1, WaveformGenerator)
+    osc = m.set_instrument(2, Oscilloscope)
+    m.set_connections(connections=[
+        dict(source='Slot1OutA', destination='Output1'),
+        dict(source='Input1', destination='Slot2InA'),
+    ])
+    ...
+    m.relinquish_ownership()   # release via m, never via wg/osc
+
+WHAT WE ALREADY BUILT (Days 1-4 experiments)
+1. Ex 1.1 — Oscilloscope data logging: capture 10 frames, save CSVs,
+   compute peak-to-peak voltage statistics, summary plot
+2. Ex 1.2 — Waveform Generator parametric sweep: 21 frequency/waveform
+   combinations, efficiency comparison vs manual operation
+3. Ex 2.1 — Arbitrary Waveform Generator: custom waveform library
+   (sawtooth, staircase, half-rectified sine) defined with numpy
+4. Ex 2.2 — Logic Analyzer: generate and capture SPI-like digital
+   patterns on 4 pins
+5. Ex 2.3 — Multi-Instrument Mode frequency sweep: WG + Oscilloscope
+   together, automated Bode plot, -3dB cutoff detection
+6. Ex 3.1 — Datalogger streaming: real-time data at 10 kSa/s with live
+   statistics
+7. Ex 3.2 — FFT analysis: dominant frequency, SNR, and THD measurement
+8. Day 4 capstones: (A) automated component characterization producing a
+   datasheet, (B) unattended signal quality monitor with alerts,
+   (C) production pass/fail tester with test certificates
+
+HARD CONSTRAINTS — RESPECT THESE IN EVERYTHING YOU SUGGEST
+1. Never invent Moku API methods. If unsure of a method name, write
+   "# TODO: verify against moku docs" instead of guessing.
+2. get_data() returns Python lists, NOT numpy arrays. Convert with
+   np.array() before numpy operations.
+3. MiM runs at most 2 instruments at once (platform_id=2).
+4. Analog bandwidth tops out at 30 MHz in; signals beyond that are out.
+5. In MiM, cleanup is ALWAYS m.relinquish_ownership() — never on the
+   individual instruments.
+6. Experiments must be achievable in a standard Indian engineering
+   college lab session (2-3 hours) with one Moku:Go per student pair.
+7. Suggested experiments should map to VTU/AICTE-style syllabi and use
+   only the instruments listed above.

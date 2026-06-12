@@ -1,0 +1,48 @@
+==========================================================================
+CURRICULUM MAPPING PROMPT
+5-Day SDI Lab Automation FDP — Day 5, Step 2 of 4
+==========================================================================
+HOW TO USE: Use this in the SAME chat where you already pasted the SDI
+Context Primer (it works in both Claude and ChatGPT). Fill in the five
+[BRACKETED] fields below with your own details, then paste the whole
+thing. The result is a curriculum map you can refine and submit to your
+HoD.
+==========================================================================
+
+Using the SDI context you loaded earlier, help me map our workshop
+experiments onto the subject I teach.
+
+MY DETAILS (filled in by me):
+- Subject I teach: [e.g., Signals & Systems]
+- Course code: [e.g., BEC502]
+- University / scheme: [default: VTU — change if different]
+- Semester: [e.g., 5th semester]
+- Key syllabus units/topics: [list your 4-6 main units, e.g.,
+  Unit 1: Continuous-time signals; Unit 2: Fourier series;
+  Unit 3: Fourier transform; Unit 4: Sampling; Unit 5: Z-transform]
+
+WHAT I WANT FROM YOU:
+
+1. A mapping table with one row per workshop experiment (Ex 1.1, 1.2,
+   2.1, 2.2, 2.3, 3.1, 3.2, and capstones A/B/C). Columns:
+   - Experiment (number + short name)
+   - Most relevant unit/topic from MY syllabus above (write "weak fit"
+     honestly if none fits — do not force a mapping)
+   - What the student would measure or observe
+   - Bloom's taxonomy level it can assess (and why, in a few words)
+   - Suggested lab slot (which week of my semester)
+   - Prerequisites the student needs before attempting it
+
+2. After the table: the TOP 3 experiments you recommend I adopt first
+   for this subject, with one sentence of justification each.
+
+3. A short paragraph (3-4 sentences) I can use in a proposal to my
+   Head of Department explaining how SDI-based automation strengthens
+   the lab component of this course. Keep it factual, not promotional.
+
+RULES:
+- Use only the experiments and instruments from the context I gave you.
+- If one of my syllabus units has no good experiment match, say so and
+  suggest what kind of new experiment WOULD fit (one line only — we
+  design new experiments in a later step).
+- Format the table in clean markdown so I can paste it into a document.

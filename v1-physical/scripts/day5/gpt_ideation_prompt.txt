@@ -1,0 +1,49 @@
+==========================================================================
+GPT IDEATION PROMPT
+5-Day SDI Lab Automation FDP — Day 5, Step 3 of 4
+==========================================================================
+HOW TO USE: Paste this into your ChatGPT chat — the SAME one that
+already has the SDI Context Primer loaded. (We use GPT for this step
+because it tends to generate more varied ideas; Claude handles the
+detailed design in the next step.) Fill in the three [BRACKETED]
+fields first. You will pick ONE of the three ideas it returns.
+==========================================================================
+
+Using the SDI context you loaded earlier, generate experiment ideas for
+my subject.
+
+MY DETAILS (filled in by me):
+- Subject: [e.g., Communication Systems]
+- Specific topic I want to target: [e.g., amplitude modulation and
+  demodulation]
+- Student level: [UG Year 2 / Year 3 / Year 4]
+
+WHAT I WANT FROM YOU:
+
+Exactly 3 distinct experiment ideas that integrate SDI-based automation
+into this topic. For EACH idea give:
+
+1. Title — short and specific
+2. Connection to the syllabus topic — which concept it makes concrete,
+   in 1-2 sentences
+3. Moku:Go instrument(s) used — only from: Oscilloscope,
+   WaveformGenerator, ArbitraryWaveformGenerator, LogicAnalyzer,
+   Datalogger, MultiInstrument (max 2 instruments at once in MiM)
+4. What students measure/observe — the actual quantities and what the
+   data looks like
+5. Expected learning outcome — one sentence starting with "Students
+   will be able to..."
+
+CONSTRAINTS (do not violate):
+- Must be feasible in a 2-3 hour lab session with one Moku:Go per pair
+- Signals must stay within 30 MHz analog bandwidth
+- Automation in Python must use only the API patterns from the context
+- Make the three ideas genuinely different from each other (different
+  instruments or different measurement strategies), not three variations
+  of the same setup
+- At least one idea should reuse the loopback setup (Output 1 -> Input 1)
+  so it needs no extra components; it is fine if another idea needs a
+  simple external circuit (RC network, diode, etc.)
+
+After the three ideas, add one line: "Which idea would you like to
+develop further?" — and stop. Do not develop any of them yet.

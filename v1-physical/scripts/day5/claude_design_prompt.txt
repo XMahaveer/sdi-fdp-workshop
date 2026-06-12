@@ -1,0 +1,63 @@
+==========================================================================
+CLAUDE DESIGN PROMPT
+5-Day SDI Lab Automation FDP — Day 5, Step 4 of 4
+==========================================================================
+HOW TO USE: Paste this into your CLAUDE chat — the one that already has
+the SDI Context Primer loaded. (We use Claude for this step because it
+produces structured, verifiable output.) Fill in the four [BRACKETED]
+fields. Paste the experiment idea you selected from GPT's three options
+into the first field, word for word.
+
+IMPORTANT: You are the domain expert, not the AI. Cross-check every
+line of the Python code it produces against what you learned in
+Days 1-4. If a method name looks unfamiliar, ask Claude to flag it
+with "# TODO: verify against moku docs" — and verify it yourself.
+==========================================================================
+
+Using the SDI context you loaded earlier, develop my chosen experiment
+idea into a complete lab experiment document.
+
+MY DETAILS (filled in by me):
+- Chosen experiment idea (pasted from the ideation step):
+  [paste the full idea here — title, syllabus connection, instruments,
+  measurements, learning outcome]
+- Subject: [e.g., Communication Systems]
+- Bloom's taxonomy level to target: [e.g., Apply / Analyze]
+- My university's lab record format requirements: [e.g., VTU standard:
+  Aim, Apparatus, Theory, Procedure, Observations, Result, Viva — change
+  if your institution differs]
+
+WHAT I WANT FROM YOU — a complete experiment document with exactly
+these sections:
+
+1. AIM — one sentence
+2. APPARATUS — itemized list (Moku:Go, cables, any external components
+   with values)
+3. THEORY — brief (200-300 words), at the level of my students,
+   connecting the concept to what the experiment demonstrates
+4. PRE-LAB QUESTIONS — 3 questions students answer before the session
+5. PROCEDURE — numbered steps, specific enough that a student who has
+   never used a Moku:Go can follow them (include the physical cable
+   connections and where to set the IP address)
+6. PYTHON CODE SCAFFOLD — complete runnable structure with the
+   measurement loop, using ONLY the verified API patterns from the
+   context (try/finally with relinquish_ownership, get_data() returning
+   lists, MiM connections as a list of dicts if MiM is used). Mark the
+   2-3 lines students must complete themselves with "# STUDENT TODO".
+   Add a comment on any line you are not 100% sure about:
+   "# TODO: verify against moku docs"
+7. EXPECTED OUTPUT — what a correct run prints and what the plot looks
+   like, in words
+8. POST-LAB VIVA QUESTIONS — exactly 5, ordered from easiest to hardest
+9. BLOOM'S LEVEL & JUSTIFICATION — state the level this experiment
+   assesses and justify it in 2-3 sentences referencing the specific
+   tasks students perform
+
+RULES:
+- Stay within my chosen idea — do not substitute a different experiment.
+- Respect every hard constraint from the context (2 instruments max in
+  MiM, 30 MHz bandwidth, lists not numpy arrays, cleanup pattern).
+- If my Bloom's target seems mismatched to the idea, say so directly and
+  suggest the adjustment — do not silently change my experiment.
+- After the document, ask me: "What would you like to refine?" — I will
+  iterate with you until it fits my syllabus.
