@@ -17,7 +17,7 @@
   <rect x="200" y="100" width="400" height="40" rx="12" fill="#0057B8"/>
   <rect x="200" y="128" width="400" height="12" fill="#0057B8"/>
   <text x="400" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Moku:Go</text>
-  <text x="400" y="160" text-anchor="middle" font-size="11" fill="#4A5568">192.168.X.X (shown on device screen)</text>
+  <text x="400" y="160" text-anchor="middle" font-size="11" fill="#4A5568">MOKU_IP from config.py</text>
 
   <!-- Output 1 -->
   <rect x="240" y="190" width="140" height="60" rx="8" fill="#EAF2FB" stroke="#0057B8" stroke-width="1.5"/>

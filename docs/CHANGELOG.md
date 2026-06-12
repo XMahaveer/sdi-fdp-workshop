@@ -2,20 +2,31 @@
 
 All notable changes to the 5-Day SDI Lab Automation FDP are documented here.
 
-## [Unreleased]
+## [v1.0.0] — 2026-06-12 — Production-ready V1 release
 
 ### Added
-- Repository scaffold: directory structure, MIT license, `.gitignore`
-- `v1-physical/scripts/config.py` — single source of truth for `MOKU_IP` and shared constants
-- Root, V1, and V2-placeholder READMEs
+- Repository scaffold: directory structure, MIT license, `.gitignore`,
+  `config.py` as the single source of truth for `MOKU_IP`
+- Days 1–3: 7 hardware-verified exercise scripts (config-based IP,
+  pathlib outputs)
+- Day 4: three complete capstone scripts (component characterizer,
+  signal monitor, production tester with certificates)
+- Day 5: four AI workflow prompts + MCC threshold-detector experiment
+  (skeleton, solution, Python host, guide)
+- `expected_outputs/`: 8 simulated-data generators + 7 reference PNGs
+- Slides v2.0 for all 5 days (61 slides, branded visual system)
+- Documents v2.0: participant workbook, trainer script, agenda PDF,
+  Day 5 facilitator guide, pre-workshop checklist
+- Diagrams: day1 loopback, day2 MiM routing, day3 streaming,
+  day5 AI workflow
+- Master design document v2.0
 
-### Planned (V1 build sequence)
-- Phase 3 — Days 1–4 scripts ported to config-based IP; Day 4 capstone options A/B/C fully developed
-- Phase 4 — Day 5 AI prompts (SDI context primer, curriculum mapping, GPT ideation, Claude design)
-- Phase 5 — Slides v2.0 for all 5 days
-- Phase 6 — Workbook, trainer script, agenda, facilitator guide, checklist v2.0
-- Phase 7 — Final QA and `v1.0.0` release
-- Phase 8 — V2 roadmap
+### Changed (vs the pre-repo v1.0 materials)
+- Day 5 rebuilt: off-site visit replaced by MCC session +
+  AI-augmented curriculum design
+- Logic Analyzer / AWG / MiM-trigger / Datalogger calls updated to the
+  hardware-verified API (moku v4.1.2)
+- All terminology updated ("Moku Custom Instrument"); branding unified
 
 ## Versioning
 

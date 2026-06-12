@@ -86,7 +86,8 @@ HARD CONSTRAINTS — RESPECT THESE IN EVERYTHING YOU SUGGEST
 3. MiM runs at most 2 instruments at once (platform_id=2).
 4. Analog bandwidth tops out at 30 MHz in; signals beyond that are out.
 5. In MiM, cleanup is ALWAYS m.relinquish_ownership() — never on the
-   individual instruments.
+   individual instruments. set_connections takes a LIST OF DICTS
+   (as shown above), never a plain dict.
 6. Experiments must be achievable in a standard Indian engineering
    college lab session (2-3 hours) with one Moku:Go per student pair.
 7. Suggested experiments should map to VTU/AICTE-style syllabi and use

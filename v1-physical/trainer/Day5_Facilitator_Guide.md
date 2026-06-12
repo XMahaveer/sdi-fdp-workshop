@@ -63,7 +63,7 @@ Facilitation notes on top of that:
 - **Time discipline in Part 3:** TODO 1 and 2 are quick; TODO 3 (the
   counter) is where groups stall. At the 30-minute mark, walk the
   solution's counter logic on the projector and let groups patch theirs.
-- **Cloud compile queue:** submit builds in waves (3–4 at a time). While
+- **MCC build queue:** submit builds in waves (3–4 at a time). While
   waiting, groups read the host script — by the time bitstreams return,
   they understand Control0/Status0.
 - **If the venue internet dies:** demo with your pre-compiled bitstream

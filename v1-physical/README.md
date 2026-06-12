@@ -38,8 +38,8 @@ Then set your device's IP address in [scripts/config.py](scripts/config.py)
 
 ## Day 5 Is Different
 
-Day 5 replaces the traditional industrial visit with two sessions faculty can
-run anywhere:
+Day 5 replaces the traditional off-site facility visit with two sessions
+faculty can run anywhere:
 
 1. **Moku Custom Instrument (MCC) introduction** — how custom Verilog runs
    inside the Moku infrastructure, and how that differs from a standard FPGA lab.

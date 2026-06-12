@@ -1,6 +1,6 @@
 # 5-Day SDI Lab Automation FDP — Master Design Document
 
-**Version:** 2.0 (full rebuild — replaces the v1.0 Industrial-Visit-based design)
+**Version:** 2.0 (full rebuild — replaces the v1.0 site-visit-based design)
 **Author & Trainer:** Mahaveer. Rajendra. Savanur
 **Designation:** Head of Engineering & AI Systems
 **Organization:** Spruha Build-in Solutions | Powered by Moku:Go — Liquid Instruments
@@ -26,7 +26,7 @@ artifacts produced in an AI-assisted workflow on Day 5.
 
 | Area | v1.0 | v2.0 |
 |------|------|------|
-| Day 5 | Industrial visit (transport-dependent, not reproducible) | MCC session + AI-augmented curriculum design (runs anywhere, produces artifacts) |
+| Day 5 | Off-site facility visit (transport-dependent, not reproducible) | MCC session + AI-augmented curriculum design (runs anywhere, produces artifacts) |
 | IP configuration | edited per script | single `scripts/config.py` (`MOKU_IP`) |
 | Logic Analyzer API | legacy per-pin calls | hardware-verified `patterns=[…]` + `'PG1'` (moku v4.1.2) |
 | MiM trigger | `set_trigger(source='Input1')` | auto-trigger (Input1 invalid in MiM — hardware-verified) |
@@ -263,8 +263,8 @@ Day 5 preview.
 
 # DAY 5 — AI-AUGMENTED CURRICULUM DESIGN FOR SDI LABS
 
-Replaces the v1.0 industrial visit. Two blocks, both reproducible at any
-institution, producing two take-home artifacts per participant.
+Replaces the v1.0 off-site facility visit. Two blocks, both reproducible
+at any institution, producing two take-home artifacts per participant.
 
 ## Schedule
 
@@ -360,7 +360,7 @@ v1-physical/
 
 ## C. Budget Notes (v2.0 deltas from v1.0)
 
-The v1.0 industrial-visit line items (transport $300–800, facility fees
+The v1.0 site-visit line items (transport $300–800, facility fees
 $200–500, visitor safety equipment $100) are removed. Day 5 v2.0 adds
 zero marginal cost: AI free tiers and the MCC cloud build are free; the
 only new requirement is reliable internet at the venue. All other
