@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Generated measurement data (participants generate these locally)
+frame_*.csv
+capture_frame_*.csv
+stream_data.csv
+wg_sweep_log.csv
+mim_sweep_data.csv
+freq_response_data.csv
+test_log.csv
+capstone_*_2*.csv
+capstone_*_2*.txt
+capstone_*_2*.png
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# Office temp files
+~$*.docx
+~$*.pptx
+~$*.xlsx
