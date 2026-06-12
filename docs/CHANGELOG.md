@@ -2,35 +2,50 @@
 
 All notable changes to the 5-Day SDI Lab Automation FDP are documented here.
 
-## [v1.0.0] — 2026-06-12 — Production-ready V1 release
+## [1.0.0] — 2026-06-13
+
+First production release of the v2.0 workshop rebuild.
 
 ### Added
-- Repository scaffold: directory structure, MIT license, `.gitignore`,
-  `config.py` as the single source of truth for `MOKU_IP`
-- Days 1–3: 7 hardware-verified exercise scripts (config-based IP,
-  pathlib outputs)
-- Day 4: three complete capstone scripts (component characterizer,
-  signal monitor, production tester with certificates)
-- Day 5: four AI workflow prompts + MCC threshold-detector experiment
-  (skeleton, solution, Python host, guide)
-- `expected_outputs/`: 8 simulated-data generators + 7 reference PNGs
-- Slides v2.0 for all 5 days (61 slides, branded visual system)
-- Documents v2.0: participant workbook, trainer script, agenda PDF,
-  Day 5 facilitator guide, pre-workshop checklist
-- Diagrams: day1 loopback, day2 MiM routing, day3 streaming,
-  day5 AI workflow
-- Master design document v2.0
+- `v1-physical/scripts/` — 7 hardware-verified Day 1–3 exercises, three
+  complete Day 4 capstones (component characterizer, signal monitor,
+  production tester), shared `config.py` (single `MOKU_IP`), and 8
+  simulated-data expected-output generators with reference PNGs
+- `v1-physical/scripts/day5/` — four AI workflow prompts (SDI context
+  primer, curriculum mapping, GPT ideation, Claude design; dry-run
+  tested) and the MCC threshold-detector experiment (skeleton, trainer
+  solution, Python host, step-by-step guide)
+- `v1-physical/slides/` — Day 1–5 decks rebuilt to the original decks'
+  visual standard (filled red/teal comparison headers, numbered badges,
+  dark Consolas code panels, icon title slides, brand footer bars)
+- `v1-physical/design/` — master design document v2.0
+- `v1-physical/workbooks/` — Participant Workbook v2 (with Day 5 AI
+  worksheets) and Pre-Workshop Checklist v2 (Claude/GPT free accounts)
+- `v1-physical/trainer/` — Trainer Script v2, agenda PDF, and the Day 5
+  Facilitator Guide
+- `v1-physical/diagrams/` — day1/day2 connection diagrams (recolored),
+  new day3 streaming setup and day5 AI workflow diagrams
 
-### Changed (vs the pre-repo v1.0 materials)
-- Day 5 rebuilt: off-site visit replaced by MCC session +
-  AI-augmented curriculum design
-- Logic Analyzer / AWG / MiM-trigger / Datalogger calls updated to the
-  hardware-verified API (moku v4.1.2)
-- All terminology updated ("Moku Custom Instrument"); branding unified
+### Changed vs the original workshop files
+- Day 5 industrial visit replaced by the MCC session + AI-augmented
+  curriculum design (Section 12 schedule)
+- All scripts import their IP from `config.py`; no per-script editing
+- Logic Analyzer, AWG, MiM-trigger, and Datalogger calls updated to the
+  hardware-verified API (moku v4.1.2); custom-instrument host uses the
+  verified `CustomInstrument` class with `set_control` / `get_status`
+  (`CloudCompile` deprecated in moku 4.1.1)
+- Branding unified: "Spruha Build-in Solutions | Powered by Moku:Go —
+  Liquid Instruments", Calibri, #0057B8 / #FF6B35, v2.0
+
+### Known open items
+- V2 online edition: roadmap placeholder only (`v2-online/README.md`);
+  built after V1 field feedback
+- Live free-tier GPT behavior of the ideation prompt is verified by the
+  trainer during night-before prep (see Day 5 Facilitator Guide)
 
 ## Versioning
 
-- **v2.0** is the content version of the workshop materials (this rebuild,
-  replacing the original Industrial-Visit-based design v1.0).
-- Git tags track release milestones (`v1.0.0` = first production-ready release
-  of this repository).
+- **v2.0** is the content version of the workshop materials (this
+  rebuild, replacing the original Industrial-Visit-based design v1.0).
+- Git tags track release milestones (`v1.0.0` = first production-ready
+  release of this repository).
