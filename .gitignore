@@ -17,6 +17,12 @@ test_log.csv
 capstone_*_2*.csv
 capstone_*_2*.txt
 capstone_*_2*.png
+oscilloscope_summary.png
+mim_sweep_bode.png
+spi_signals.png
+waveform_library.png
+waveform_library.json
+fft_snr_thd_analysis.png
 
 # OS / editor
 Thumbs.db

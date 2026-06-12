@@ -1,8 +1,11 @@
 # V2 — Online Edition (Roadmap)
 
-**Status: planned — not yet in development.** V1 reached its production
-release (`v1.0.0`); this document records the V2 vision so design
-decisions are captured while V1 delivery experience is fresh.
+**Status: in development — Model A simulator core is DONE.** Every V1
+Day 1–4 script (7 exercises + 3 capstones) runs unmodified against the
+simulator in [`simulator/`](simulator/), with the hardware-verified
+teaching rules enforced. See [`simulator/README.md`](simulator/README.md)
+for usage and `simulator/run_all_v1.py` for the acceptance test
+(currently: ALL PASS).
 
 ## What V2 Is
 
@@ -20,11 +23,8 @@ already online by nature and carries over with minimal change.
 | **B. Cloud lab workstations** | Real Moku:Go units racked at a hub site, loopback/DUT pre-wired; participants get remote desktop or API tunnel slots | Real hardware behavior, real API | Scheduling, concurrency limits, hub maintenance |
 | **C. Hybrid** | Simulation for exercises; timed sessions on cloud hardware for capstones | Best of both | Two stacks to maintain |
 
-Current leaning: **start with Model A** (a `moku`-compatible simulator),
-because the v1 repo already contains the seed — the 8
-`expected_outputs/generate_*_expected.py` scripts produce realistic
-simulated results for every exercise with zero hardware. Model B/C can
-layer on later.
+**Decision: Model A first — and its core now exists** (`simulator/`).
+Model B/C can layer on later for "real signal" capstone sessions.
 
 ## What Carries Over From V1 Unchanged
 
@@ -38,9 +38,10 @@ layer on later.
 
 ## What Must Be Built
 
-1. **Simulator package** — `moku`-API-compatible classes (Oscilloscope,
-   WaveformGenerator, AWG, LogicAnalyzer, Datalogger, MultiInstrument)
-   with realistic noise, settle behavior, and error messages
+1. ~~**Simulator package**~~ — **DONE**: `moku`-API-compatible classes
+   (all six + CustomInstrument) with realistic noise/distortion, an
+   optional simulated RC DUT (`MOKUSIM_DUT=rc:<fc>`), and enforcing
+   error messages
 2. **Remote delivery kit** — session plans re-timed for online cohorts
    (shorter blocks, async exercises), breakout-room facilitation notes
 3. **Browser experience (stretch)** — virtual front panel showing the
@@ -51,10 +52,11 @@ layer on later.
 
 ## Sequencing (timeline TBD)
 
-1. Simulator core for Oscilloscope + WG → Day 1 fully online
-2. AWG, Logic Analyzer, MiM routing → Day 2
-3. Datalogger streaming + FFT path → Day 3, capstones
-4. Pilot cohort → feedback → Model B/C evaluation
+1. ~~Simulator core for Oscilloscope + WG → Day 1 fully online~~ DONE
+2. ~~AWG, Logic Analyzer, MiM routing → Day 2~~ DONE
+3. ~~Datalogger streaming + FFT path → Day 3, capstones~~ DONE
+4. Remote delivery kit (re-timed session plans) → NEXT
+5. Pilot cohort → feedback → Model B/C evaluation
 
 Decisions and progress will be tracked in `docs/CHANGELOG.md` once V2
 development starts.

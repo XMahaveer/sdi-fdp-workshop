@@ -2,6 +2,16 @@
 
 All notable changes to the 5-Day SDI Lab Automation FDP are documented here.
 
+## [Unreleased] — V2 development
+
+### Added
+- `v2-online/simulator/` — mokusim, a moku-API-compatible simulator
+  (V2 Model A): all six workshop instrument classes + CustomInstrument,
+  realistic noise/distortion, MiM routing with loopback model, optional
+  simulated RC DUT (`MOKUSIM_DUT=rc:<fc>`), and enforced
+  hardware-verified teaching rules. All 10 V1 Day 1-4 scripts run
+  unmodified and hardware-free (`simulator/run_all_v1.py`: ALL PASS).
+
 ## [1.0.0] — 2026-06-13
 
 First production release of the v2.0 workshop rebuild.
