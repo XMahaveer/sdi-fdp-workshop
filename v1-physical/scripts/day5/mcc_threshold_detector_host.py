@@ -25,11 +25,12 @@ import sys
 import time
 from pathlib import Path
 
-# TODO: verify class name against moku docs for your installed version —
-# newer releases expose the custom-instrument class as MokuCustomInstrument;
-# older releases used CloudCompile.
+# Class name verified against moku 4.1.2.1: CustomInstrument is the
+# canonical class (moku.instruments). The old name CloudCompile was
+# deprecated in moku 4.1.1 and now just subclasses CustomInstrument
+# with a deprecation warning. (MokuCustomInstrument does not exist.)
 from moku.instruments import MultiInstrument, WaveformGenerator
-from moku.instruments import MokuCustomInstrument
+from moku.instruments import CustomInstrument
 
 # Shared workshop settings live one level up in config.py
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -55,7 +56,7 @@ m = MultiInstrument(MOKU_IP, platform_id=PLATFORM_ID,
 
 try:
     # --- Deploy instruments ---
-    ci = m.set_instrument(1, MokuCustomInstrument, bitstream=BITSTREAM)
+    ci = m.set_instrument(1, CustomInstrument, bitstream=BITSTREAM)
     wg = m.set_instrument(2, WaveformGenerator)
 
     # --- Routing ---
@@ -73,7 +74,10 @@ try:
 
     # --- Set detection threshold from Python ---
     # Q1.15 scale: 32767 = +1.0 V full scale, 16384 = +0.5 V
-    ci.set_control_register(0, THRESHOLD)
+    # Register API verified against moku 4.1.2.1:
+    # set_control(idx, value) writes ControlN; get_status() reads the
+    # Status registers (index [0] = Status0).
+    ci.set_control(0, THRESHOLD)
     print(f"Threshold set: {THRESHOLD} "
           f"({THRESHOLD/32767:.2f} x full scale)")
     print(f"Test signal: {SIGNAL_FREQ} Hz sine, {SIGNAL_AMPLITUDE} Vpp")
@@ -85,7 +89,7 @@ try:
     print("-" * 36)
     for second in range(1, MONITOR_SECONDS + 1):
         time.sleep(1)
-        crossings = ci.get_status_register(0)
+        crossings = ci.get_status()[0]   # Status0
         flag = '' if abs(crossings - SIGNAL_FREQ) <= 2 else '  <-- check'
         print(f"{second:>7} | {crossings:>24}{flag}")
 

@@ -295,8 +295,9 @@ Status0 ≈ 100 crossings/sec for a 100 Hz sine) → teaching discussion
    separate, MIM-level concern)
 3. Fixed port list — Control0–19 in, Status0–3 out, all declared
 4. Signals are Q1.15 signed 16-bit (32767 = +1.0 V)
-5. Python ⇄ FPGA via `set_control_register` / `get_status_register` —
-   no JTAG; synthesis happens on the Liquid Instruments cloud
+5. Python ⇄ FPGA via `CustomInstrument.set_control(idx, value)` /
+   `get_status()` (verified, moku 4.1.2.1) — no JTAG; synthesis happens
+   on the Liquid Instruments cloud
 
 Moku:Go cautions: OutputD is not physical; OutputC disconnects in 3-slot
 MIM; LUTs initialize via `initial begin` with `$rtoi/$sin/$cos`, not
