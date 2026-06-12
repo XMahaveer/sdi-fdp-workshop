@@ -52,11 +52,15 @@ Model B/C can layer on later for "real signal" capstone sessions.
 
 ## Sequencing (timeline TBD)
 
-1. ~~Simulator core for Oscilloscope + WG → Day 1 fully online~~ DONE
-2. ~~AWG, Logic Analyzer, MiM routing → Day 2~~ DONE
-3. ~~Datalogger streaming + FFT path → Day 3, capstones~~ DONE
-4. Remote delivery kit (re-timed session plans) → NEXT
-5. Pilot cohort → feedback → Model B/C evaluation
+1. ~~Simulator core (all instruments) → Days 1-4 fully online~~ DONE
+2. ~~Live workshop dashboard (Meet companion mode, free tier)~~ DONE —
+   [`dashboard/`](dashboard/): live signal + FFT, cohort progress grid,
+   device-rotation queue, trainer code-push, Join-Meet button
+3. ~~Model B runbook~~ DONE — [`MODEL_B_CLOUD_WORKSTATION.md`](MODEL_B_CLOUD_WORKSTATION.md)
+4. ~~Model C runbook~~ DONE — [`MODEL_C_HYBRID.md`](MODEL_C_HYBRID.md)
+5. Google Meet Add-on wrapper (dashboard inside Meet) → NEXT —
+   scaffold in [`meet-addon/`](meet-addon/)
+6. Remote delivery kit (re-timed session plans) → then pilot cohort
 
 Decisions and progress will be tracked in `docs/CHANGELOG.md` once V2
 development starts.

@@ -11,6 +11,16 @@ All notable changes to the 5-Day SDI Lab Automation FDP are documented here.
   simulated RC DUT (`MOKUSIM_DUT=rc:<fc>`), and enforced
   hardware-verified teaching rules. All 10 V1 Day 1-4 scripts run
   unmodified and hardware-free (`simulator/run_all_v1.py`: ALL PASS).
+- `v2-online/dashboard/` — live workshop dashboard (Plotly Dash, free
+  tier): trainer/participant roles, live signal + FFT from mokusim or
+  a real Moku:Go (sim/live modes), cohort progress grid, Model B/C
+  device-rotation queue, trainer code-push, Google Meet companion
+  integration (Join-Meet button; Add-on wrapper scaffolded in
+  `v2-online/meet-addon/`). Share via free Cloudflare quick tunnel.
+- `v2-online/MODEL_B_CLOUD_WORKSTATION.md` and
+  `v2-online/MODEL_C_HYBRID.md` — free-tier runbooks for the real-
+  hardware delivery models (Chrome Remote Desktop / Tailscale rotation;
+  single-unit hybrid with trainer live + cohort on simulator).
 
 ## [1.0.0] — 2026-06-13
 
