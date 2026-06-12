@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="Calibri, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF6B35"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <text x="450" y="35" text-anchor="middle" font-size="20" font-weight="bold" fill="#0B2E59">Day 5: AI-Augmented Curriculum Design Workflow</text>
+  <text x="450" y="55" text-anchor="middle" font-size="13" fill="#5A6B7B">Four prompts (scripts/day5/), two AIs, faculty as the expert judge</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="90" width="190" height="130" rx="10" fill="#EAF2FB" stroke="#0057B8" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="90" width="190" height="34" rx="10" fill="#0057B8"/>
+  <text x="135" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="white">1. SDI Context Primer</text>
+  <text x="135" y="148" text-anchor="middle" font-size="11" fill="#1A202C">Paste FIRST into NEW chats</text>
+  <text x="135" y="166" text-anchor="middle" font-size="11" font-weight="bold" fill="#1A202C">in BOTH Claude and GPT</text>
+  <text x="135" y="190" text-anchor="middle" font-size="10" fill="#5A6B7B">teaches hardware + verified API</text>
+  <text x="135" y="206" text-anchor="middle" font-size="10" fill="#5A6B7B">so the AI cannot hallucinate</text>
+
+  <!-- Step 2 -->
+  <rect x="270" y="90" width="190" height="130" rx="10" fill="#EAF2FB" stroke="#0057B8" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="270" y="90" width="190" height="34" rx="10" fill="#0057B8"/>
+  <text x="365" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="white">2. Curriculum Mapping</text>
+  <text x="365" y="148" text-anchor="middle" font-size="11" fill="#1A202C">Map Days 1–4 experiments</text>
+  <text x="365" y="166" text-anchor="middle" font-size="11" fill="#1A202C">onto YOUR subject syllabus</text>
+  <text x="365" y="190" text-anchor="middle" font-size="10" fill="#5A6B7B">either AI • Bloom's levels</text>
+  <text x="365" y="206" text-anchor="middle" font-size="10" fill="#5A6B7B">output: map for your HoD</text>
+
+  <!-- Step 3 -->
+  <rect x="500" y="90" width="190" height="130" rx="10" fill="#FFF0E9" stroke="#FF6B35" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="500" y="90" width="190" height="34" rx="10" fill="#FF6B35"/>
+  <text x="595" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="white">3. GPT Ideation</text>
+  <text x="595" y="148" text-anchor="middle" font-size="11" fill="#1A202C">3 experiment ideas for</text>
+  <text x="595" y="166" text-anchor="middle" font-size="11" fill="#1A202C">your subject and topic</text>
+  <text x="595" y="190" text-anchor="middle" font-size="10" fill="#5A6B7B">GPT = wider ideation</text>
+  <text x="595" y="206" text-anchor="middle" font-size="10" font-weight="bold" fill="#B34A20">YOU pick one</text>
+
+  <!-- Step 4 -->
+  <rect x="730" y="90" width="150" height="130" rx="10" fill="#FFF0E9" stroke="#FF6B35" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="730" y="90" width="150" height="34" rx="10" fill="#FF6B35"/>
+  <text x="805" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="white">4. Claude Design</text>
+  <text x="805" y="148" text-anchor="middle" font-size="11" fill="#1A202C">Full experiment doc:</text>
+  <text x="805" y="166" text-anchor="middle" font-size="11" fill="#1A202C">aim → viva questions</text>
+  <text x="805" y="190" text-anchor="middle" font-size="10" fill="#5A6B7B">structured + code scaffold</text>
+  <text x="805" y="206" text-anchor="middle" font-size="10" fill="#5A6B7B">iterate until it fits</text>
+
+  <!-- Arrows between steps -->
+  <line x1="230" y1="155" x2="266" y2="155" stroke="#FF6B35" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="460" y1="155" x2="496" y2="155" stroke="#FF6B35" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="690" y1="155" x2="726" y2="155" stroke="#FF6B35" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Verification band -->
+  <rect x="40" y="265" width="840" height="80" rx="10" fill="#0B2E59" filter="url(#shadow)"/>
+  <text x="460" y="298" text-anchor="middle" font-size="15" font-weight="bold" fill="white">FACULTY VERIFICATION — you are the domain expert</text>
+  <text x="460" y="322" text-anchor="middle" font-size="12" fill="#CADCFC">Cross-check every API call against Days 1–4 • flag anything unfamiliar with "# TODO: verify against moku docs" • trainer review</text>
+
+  <!-- Arrows down into verification -->
+  <line x1="365" y1="220" x2="365" y2="261" stroke="#FF6B35" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="805" y1="220" x2="805" y2="261" stroke="#FF6B35" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Deliverables -->
+  <rect x="150" y="375" width="280" height="60" rx="10" fill="#EAF2FB" stroke="#0057B8" stroke-width="2"/>
+  <text x="290" y="400" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B2E59">Deliverable 1: Curriculum Map</text>
+  <text x="290" y="420" text-anchor="middle" font-size="11" fill="#5A6B7B">AI-generated, faculty-verified, HoD-ready</text>
+
+  <rect x="470" y="375" width="280" height="60" rx="10" fill="#EAF2FB" stroke="#0057B8" stroke-width="2"/>
+  <text x="610" y="400" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B2E59">Deliverable 2: New SDI Experiment</text>
+  <text x="610" y="420" text-anchor="middle" font-size="11" fill="#5A6B7B">AI-designed, faculty-owned, syllabus-fitted</text>
+
+  <line x1="290" y1="345" x2="290" y2="371" stroke="#0057B8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="610" y1="345" x2="610" y2="371" stroke="#0057B8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <text x="450" y="465" text-anchor="middle" font-size="11" fill="#5A6B7B">5-Day SDI Lab Automation FDP v2.0 — Spruha Build-in Solutions | Powered by Moku:Go — Liquid Instruments</text>
+</svg>

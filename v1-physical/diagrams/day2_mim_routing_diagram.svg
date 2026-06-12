@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#0057B8"/>
+    </marker>
+    <marker id="arwg" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#276749"/>
+    </marker>
+    <marker id="arwr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#DD6B20"/>
+    </marker>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#0B2E59">Setup B: Multi-Instrument Mode (MiM) Routing</text>
+  <text x="450" y="50" text-anchor="middle" font-size="13" fill="#4A5568">Exercises 2.3, Day 4 Capstone | platform_id=2 (Moku:Go, 2 slots)</text>
+
+  <!-- Outer Moku:Go box -->
+  <rect x="120" y="70" width="660" height="340" rx="14" fill="#FAFBFC" stroke="#0057B8" stroke-width="2.5" filter="url(#sh)"/>
+  <rect x="120" y="70" width="660" height="38" rx="14" fill="#0B2E59"/>
+  <rect x="120" y="96" width="660" height="12" fill="#0B2E59"/>
+  <text x="450" y="94" text-anchor="middle" font-size="15" font-weight="bold" fill="white">Moku:Go — Multi-Instrument Mode</text>
+
+  <!-- SLOT 1: Waveform Generator -->
+  <rect x="160" y="130" width="260" height="130" rx="10" fill="white" stroke="#0057B8" stroke-width="2"/>
+  <rect x="160" y="130" width="260" height="30" rx="10" fill="#0057B8"/>
+  <rect x="160" y="150" width="260" height="10" fill="#0057B8"/>
+  <text x="290" y="152" text-anchor="middle" font-size="13" font-weight="bold" fill="white">Slot 1: Waveform Generator</text>
+  <text x="290" y="185" text-anchor="middle" font-size="11" fill="#4A5568">wg = m.set_instrument(1, WaveformGenerator)</text>
+  <!-- Slot1 ports -->
+  <rect x="370" y="205" width="45" height="24" rx="4" fill="#EAF2FB" stroke="#0057B8" stroke-width="1"/>
+  <text x="392" y="221" text-anchor="middle" font-size="9" font-weight="bold" fill="#0B2E59">OutA</text>
+  <rect x="370" y="235" width="45" height="24" rx="4" fill="#EAF2FB" stroke="#0057B8" stroke-width="1"/>
+  <text x="392" y="251" text-anchor="middle" font-size="9" font-weight="bold" fill="#0B2E59">OutB</text>
+
+  <!-- SLOT 2: Oscilloscope -->
+  <rect x="480" y="130" width="260" height="130" rx="10" fill="white" stroke="#0D9488" stroke-width="2"/>
+  <rect x="480" y="130" width="260" height="30" rx="10" fill="#0D9488"/>
+  <rect x="480" y="150" width="260" height="10" fill="#0D9488"/>
+  <text x="610" y="152" text-anchor="middle" font-size="13" font-weight="bold" fill="white">Slot 2: Oscilloscope</text>
+  <text x="610" y="185" text-anchor="middle" font-size="11" fill="#4A5568">osc = m.set_instrument(2, Oscilloscope)</text>
+  <!-- Slot2 ports -->
+  <rect x="480" y="205" width="40" height="24" rx="4" fill="#F0FFF4" stroke="#276749" stroke-width="1"/>
+  <text x="500" y="221" text-anchor="middle" font-size="9" font-weight="bold" fill="#276749">InA</text>
+  <rect x="480" y="235" width="40" height="24" rx="4" fill="#F0FFF4" stroke="#276749" stroke-width="1"/>
+  <text x="500" y="251" text-anchor="middle" font-size="9" font-weight="bold" fill="#276749">InB</text>
+
+  <!-- Route 1: Slot1OutA → Slot2InA -->
+  <line x1="415" y1="217" x2="480" y2="217" stroke="#0057B8" stroke-width="2.5" marker-end="url(#arw)"/>
+  <text x="448" y="210" text-anchor="middle" font-size="8" fill="#0057B8" font-weight="bold">①</text>
+
+  <!-- Physical I/O -->
+  <rect x="160" y="300" width="120" height="40" rx="6" fill="#F0FFF4" stroke="#276749" stroke-width="1.5"/>
+  <text x="220" y="325" text-anchor="middle" font-size="12" font-weight="bold" fill="#276749">Input 1</text>
+  <text x="220" y="355" text-anchor="middle" font-size="9" fill="#4A5568">ADC (BNC)</text>
+
+  <rect x="620" y="300" width="120" height="40" rx="6" fill="#EAF2FB" stroke="#0057B8" stroke-width="1.5"/>
+  <text x="680" y="325" text-anchor="middle" font-size="12" font-weight="bold" fill="#0B2E59">Output 1</text>
+  <text x="680" y="355" text-anchor="middle" font-size="9" fill="#4A5568">DAC (BNC)</text>
+
+  <!-- Route 2: Slot1OutA → Output1 -->
+  <path d="M 415 240 L 450 240 Q 460 240 460 260 L 460 310 Q 460 320 480 320 L 620 320" fill="none" stroke="#DD6B20" stroke-width="2" marker-end="url(#arwr)" stroke-dasharray="6,3"/>
+  <text x="540" y="312" text-anchor="middle" font-size="8" fill="#DD6B20" font-weight="bold">②</text>
+
+  <!-- Code reference box -->
+  <rect x="140" y="380" width="620" height="70" rx="6" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="160" y="400" font-size="11" font-weight="bold" fill="#0B2E59">Routing Code (CORRECT format):</text>
+  <text x="160" y="418" font-size="10" fill="#4A5568" font-family="Consolas, monospace">connections = [</text>
+  <text x="175" y="432" font-size="10" fill="#0057B8" font-family="Consolas, monospace">dict(source='Slot1OutA', destination='Slot2InA'),   # ① Internal</text>
+  <text x="175" y="446" font-size="10" fill="#DD6B20" font-family="Consolas, monospace">dict(source='Slot1OutA', destination='Output1'),    # ② Physical</text>
+
+  <!-- Legend -->
+  <rect x="140" y="456" width="620" height="30" rx="4" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="160" y="476" font-size="10" fill="#4A5568">
+    <tspan fill="#0057B8" font-weight="bold">① ━━</tspan> Internal (WG→OSC)  |
+    <tspan fill="#DD6B20" font-weight="bold">② ╌╌</tspan> Physical output  |
+    <tspan fill="#276749" font-weight="bold">■</tspan> Input  |
+    <tspan fill="#0057B8" font-weight="bold">■</tspan> Output
+  </text>
+</svg>
