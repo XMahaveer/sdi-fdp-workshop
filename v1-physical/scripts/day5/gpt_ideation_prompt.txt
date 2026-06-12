@@ -6,7 +6,8 @@ HOW TO USE: Paste this into your ChatGPT chat — the SAME one that
 already has the SDI Context Primer loaded. (We use GPT for this step
 because it tends to generate more varied ideas; Claude handles the
 detailed design in the next step.) Fill in the three [BRACKETED]
-fields first. You will pick ONE of the three ideas it returns.
+fields first, then paste everything below this box. You will pick
+ONE of the three ideas it returns.
 ==========================================================================
 
 Using the SDI context you loaded earlier, generate experiment ideas for

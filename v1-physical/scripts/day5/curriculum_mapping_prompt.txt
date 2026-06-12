@@ -4,9 +4,11 @@ CURRICULUM MAPPING PROMPT
 ==========================================================================
 HOW TO USE: Use this in the SAME chat where you already pasted the SDI
 Context Primer (it works in both Claude and ChatGPT). Fill in the five
-[BRACKETED] fields below with your own details, then paste the whole
-thing. The result is a curriculum map you can refine and submit to your
-HoD.
+[BRACKETED] fields below with your own details, then paste everything
+below this box. The result is a curriculum map you can refine and
+submit to your HoD.
+TIP: if the table pastes badly into Word, just tell the AI: "repeat
+the table as a plain indented list" — it will reformat instantly.
 ==========================================================================
 
 Using the SDI context you loaded earlier, help me map our workshop

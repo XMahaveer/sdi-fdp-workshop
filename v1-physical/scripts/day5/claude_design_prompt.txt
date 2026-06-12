@@ -5,8 +5,9 @@ CLAUDE DESIGN PROMPT
 HOW TO USE: Paste this into your CLAUDE chat — the one that already has
 the SDI Context Primer loaded. (We use Claude for this step because it
 produces structured, verifiable output.) Fill in the four [BRACKETED]
-fields. Paste the experiment idea you selected from GPT's three options
-into the first field, word for word.
+fields, then paste everything below this box. Paste the experiment idea
+you selected from GPT's three options into the first field, word for
+word.
 
 IMPORTANT: You are the domain expert, not the AI. Cross-check every
 line of the Python code it produces against what you learned in

@@ -3,10 +3,12 @@ SDI CONTEXT PRIMER PROMPT
 5-Day SDI Lab Automation FDP — Day 5, Step 1 of 4
 ==========================================================================
 HOW TO USE: Open a NEW chat in Claude (claude.ai) AND a NEW chat in
-ChatGPT (chat.openai.com). Paste everything below the line into BOTH,
-as your very first message. Do not skip this step — it teaches the AI
+ChatGPT (chat.openai.com). Paste everything BELOW THIS BOX into BOTH,
+as your very first message — start copying from the line that begins
+"You are going to help me". Do not skip this step — it teaches the AI
 what your hardware can and cannot do, so its later suggestions are
-realistic instead of imaginary.
+realistic instead of imaginary. (Pasting this instruction box too is
+harmless — the AI will ignore it.)
 ==========================================================================
 
 You are going to help me, an engineering college faculty member, design
