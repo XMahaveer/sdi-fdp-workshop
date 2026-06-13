@@ -22,6 +22,13 @@ All notable changes to the 5-Day SDI Lab Automation FDP are documented here.
   (signal-only `?view=signal` layout), `/addon/manifest` routes that
   dock the dashboard inside Meet via the Add-ons SDK, with graceful
   standalone fallback. Only a free GCP registration remains.
+- `v2-online/REMOTE_DELIVERY_KIT.md` — online delivery playbook: all
+  five days re-timed into <=45-min live blocks with breaks, self-paced
+  async exercise windows, breakout-room facilitation notes, a
+  per-exercise hardware marker (Simulator OK / Real-HW optional / Cloud
+  required), screen-share demo discipline, and the Day 5 MCC + AI
+  workflow adapted for screen-share (MCC host verified against the
+  simulator's CustomInstrument).
 - `v2-online/MODEL_B_CLOUD_WORKSTATION.md` and
   `v2-online/MODEL_C_HYBRID.md` — free-tier runbooks for the real-
   hardware delivery models (Chrome Remote Desktop / Tailscale rotation;

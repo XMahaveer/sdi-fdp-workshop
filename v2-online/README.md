@@ -62,7 +62,12 @@ Model B/C can layer on later for "real signal" capstone sessions.
    side-panel + main-stage routes live in `dashboard/meet_addon.py`,
    config in [`meet-addon/`](meet-addon/); only GCP registration
    (free, your credentials) remains
-6. Remote delivery kit (re-timed session plans) → NEXT, then pilot cohort
+6. ~~Remote delivery kit (re-timed session plans)~~ DONE —
+   [`REMOTE_DELIVERY_KIT.md`](REMOTE_DELIVERY_KIT.md): all 5 days
+   re-timed into <=45-min blocks with async exercise windows,
+   breakout-room facilitation, per-exercise hardware markers, and the
+   Day 5 AI/MCC workflow adapted for screen-share
+7. Pilot cohort (timing + target colleges) → awaiting trainer input
 
 Decisions and progress will be tracked in `docs/CHANGELOG.md` once V2
 development starts.
