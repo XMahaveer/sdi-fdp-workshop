@@ -40,6 +40,8 @@ python app.py
 | `MOKUDASH_MODE=live MOKU_IP=…` | signals from a **real Moku:Go** — Models B/C; identical code path because mokusim is API-compatible |
 | `MEET_URL=https://meet.google.com/xxx-xxxx-xxx` | the Join-Meet button target |
 | `MOKUSIM_DUT=rc:2500` | (sim mode) put a simulated RC filter in the loopback |
+| `SUPABASE_URL` / `SUPABASE_KEY` | enable persistent progress (Supabase anon key). Unset = in-memory only |
+| `TRAINER_PASSWORD` | password for the `/trainer` console (default `XBL@2026`) |
 
 ## Google Meet integration
 
@@ -53,6 +55,29 @@ dashboard *inside* Meet via the Add-ons SDK (main stage uses the
 `?view=signal` signal-only layout). Launch with `PUBLIC_URL=` and
 `GCP_PROJECT_NUMBER=` set; finish with a free GCP registration — see
 [`../meet-addon/README.md`](../meet-addon/README.md).
+
+## Persistent progress + trainer console (Supabase)
+
+Optional. With `SUPABASE_URL` + `SUPABASE_KEY` set, participant rosters
+and exercise progress persist across refreshes and server restarts;
+without them the dashboard runs exactly as before (in-memory). The
+layer is `requests`-based (no SDK) and **fails silent** — if Supabase
+is unreachable or the tables are missing, it falls back to in-memory
+and never crashes.
+
+**One-time setup:** run [`schema.sql`](schema.sql) in the Supabase SQL
+editor (creates `sessions`, `participants`, `progress` with a
+`unique(participant_id, exercise_id)` constraint and RLS + anon
+policies). Until you do, the app simply stays in-memory.
+
+**Participant flow:** enter name (+ optional 4-digit join code) → Join
+roster. Progress saved per tick; restored on refresh.
+
+**Trainer console — `/trainer`** (password `TRAINER_PASSWORD`):
+- live table — Name · College · Ex1.1…Cap C · Score % · Last Active
+- **Export CSV** button; auto-refreshes every 30 s
+- **Create session** with a college name → generates a 4-digit join
+  code participants type when joining, linking them to that session
 
 ## Cloud hosting upgrade (optional, still free)
 

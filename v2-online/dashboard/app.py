@@ -169,6 +169,18 @@ try:
 except Exception as _e:        # never let the add-on layer break the app
     print(f'[dashboard] Meet add-on routes not registered: {_e}')
 
+# Persistence (Supabase) + trainer console at /trainer. Both optional —
+# if Supabase is unconfigured/unreachable the dashboard runs in-memory.
+import supabase_store as store
+try:
+    import trainer_view
+    trainer_view.register(server)
+    print(f'[dashboard] persistence: '
+          f'{"Supabase" if store.enabled() else "in-memory only"}'
+          f'  |  trainer console: /trainer')
+except Exception as _e:
+    print(f'[dashboard] trainer console not registered: {_e}')
+
 app.layout = html.Div([
     dcc.Location(id='url'),
     dcc.Store(id='me', storage_type='local'),
@@ -235,6 +247,9 @@ app.layout = html.Div([
             card('You', [
                 dcc.Input(id='name-in', placeholder='your name',
                           style={'marginRight': '8px'}),
+                dcc.Input(id='join-code-in', placeholder='join code',
+                          maxLength=4, style={'marginRight': '8px',
+                                              'width': '110px'}),
                 html.Button('Join roster', id='name-btn', n_clicks=0),
                 html.Div(id='me-label', style={
                     'marginTop': '6px', 'color': MUTED,
@@ -305,16 +320,60 @@ def signal_only_view(search):
     return {'flex': '1'}
 
 
+def _as_me(me):
+    """Normalize the 'me' store to a dict (was a bare name string in
+    earlier versions / fresh local storage)."""
+    if isinstance(me, str):
+        return {'name': me}
+    return dict(me) if me else {}
+
+
 @app.callback(Output('me', 'data'), Output('me-label', 'children'),
-              Input('name-btn', 'n_clicks'), State('name-in', 'value'),
+              Output('my-progress', 'value'),
+              Input('name-btn', 'n_clicks'),
+              State('name-in', 'value'), State('join-code-in', 'value'),
               State('me', 'data'), prevent_initial_call=False)
-def join_roster(n, name, me):
-    if n and name:
-        me = name.strip()[:24]
+def join_roster(n, name, code, me):
+    me = _as_me(me)
+    trig = dash.callback_context.triggered_id
+
+    # --- a fresh join (button click) ---
+    if trig == 'name-btn' and name:
+        nm = name.strip()[:24]
+        sid = college = pid = None
+        if code and store.enabled():
+            sess = store.get_session_by_code(str(code).strip())
+            if sess:
+                sid, college = sess['id'], sess.get('college_name')
+        if store.enabled():
+            part = store.get_or_create_participant(sid, nm)
+            if part:
+                pid = part['id']
+        me = {'name': nm, 'pid': pid, 'sid': sid, 'college': college}
         with LOCK:
-            STATE['progress'].setdefault(me, set())
-    label = f'signed in as: {me}' if me else 'not signed in yet'
-    return me, label
+            STATE['progress'].setdefault(nm, set())
+
+    nm = me.get('name')
+    if not nm:
+        return me, 'not signed in yet', no_update
+
+    # --- restore progress (on join AND on page refresh) ---
+    restored = no_update
+    done = store.get_progress(me['pid']) if me.get('pid') else []
+    if done:
+        with LOCK:
+            STATE['progress'][nm] = set(done)
+        restored = done
+    else:
+        with LOCK:
+            restored = sorted(STATE['progress'].get(nm, set()))
+
+    label = 'signed in as: ' + nm
+    if me.get('college'):
+        label += f'  ·  {me["college"]}'
+    elif me.get('sid') is None and me.get('pid') is None:
+        label += '  ·  (local only)'
+    return me, label, restored
 
 
 @app.callback(Output('scope-fig', 'figure'), Output('fft-fig', 'figure'),
@@ -366,9 +425,20 @@ def snippet(n, _, value, search):
               Input('tick-slow', 'n_intervals'),
               Input('my-progress', 'value'), State('me', 'data'))
 def progress(_, my_done, me):
-    if me:
+    me = _as_me(me)
+    nm, pid = me.get('name'), me.get('pid')
+    if nm:
+        new = set(my_done or [])
         with LOCK:
-            STATE['progress'][me] = set(my_done or [])
+            old = set(STATE['progress'].get(nm, set()))
+            STATE['progress'][nm] = new
+        # only persist on an actual checkbox change (not the poll tick),
+        # and only when we have a Supabase participant id
+        if dash.callback_context.triggered_id == 'my-progress' and pid:
+            for ex in (new - old):
+                store.set_progress(pid, ex)
+            for ex in (old - new):
+                store.clear_progress(pid, ex)
     with LOCK:
         snapshot = {k: set(v) for k, v in STATE['progress'].items()}
     if not snapshot:
@@ -398,6 +468,7 @@ def progress(_, my_done, me):
               Input('tick-slow', 'n_intervals'),
               State('me', 'data'), State('url', 'search'))
 def queue(_j, _l, _n, _t, me, search):
+    me = _as_me(me).get('name')
     trig = dash.callback_context.triggered_id
     with LOCK:
         if trig == 'queue-join' and me and me not in STATE['queue'] \

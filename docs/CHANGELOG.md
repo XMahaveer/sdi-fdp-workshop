@@ -22,6 +22,15 @@ All notable changes to the 5-Day SDI Lab Automation FDP are documented here.
   (signal-only `?view=signal` layout), `/addon/manifest` routes that
   dock the dashboard inside Meet via the Add-ons SDK, with graceful
   standalone fallback. Only a free GCP registration remains.
+- `v2-online/dashboard/` persistence — `supabase_store.py` (requests-based
+  Supabase REST layer, fail-silent in-memory fallback), `schema.sql`
+  (sessions / participants / progress with unique(participant_id,
+  exercise_id) + RLS anon policies), and `trainer_view.py`: a
+  password-gated `/trainer` console (Name · College · Ex1.1–Cap C ·
+  Score % · Last Active, CSV export, 30 s auto-refresh, session create
+  -> 4-digit join code). Participants get a join-code field; progress
+  persists across refresh. Env: SUPABASE_URL, SUPABASE_KEY,
+  TRAINER_PASSWORD. Rebranded SDI Lab Cloud | Xenith Brand Labs.
 - `v2-online/REMOTE_DELIVERY_KIT.md` — online delivery playbook: all
   five days re-timed into <=45-min live blocks with breaks, self-paced
   async exercise windows, breakout-room facilitation notes, a
