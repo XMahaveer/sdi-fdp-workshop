@@ -95,7 +95,7 @@ def _page(surface, title, body, embed_qs=''):
     return f"""<!doctype html>
 <html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title}</title>
+<title>SDI Lab Cloud — {title} | Xenith Brand Labs</title>
 <style>
   html,body{{margin:0;height:100%;font-family:Calibri,Segoe UI,sans-serif;
     background:#F0F4F8;color:#1A202C}}
@@ -112,7 +112,7 @@ def _page(surface, title, body, embed_qs=''):
 </style></head>
 <body data-surface="{surface}">
   <div class="bar">
-    <span>SDI FDP — {title}</span>
+    <span>SDI Lab Cloud — {title} | Xenith Brand Labs</span>
     {body}
   </div>
   <div id="meet-banner">loading Meet add-on…</div>
@@ -130,14 +130,14 @@ def register(server):
                 '</button>')
         # side panel embeds the full dashboard (roster/queue/snippet
         # are usable in the narrow column)
-        return Response(_page('sidepanel', 'Side Panel', body),
+        return Response(_page('sidepanel', 'Trainer Panel', body),
                         mimetype='text/html')
 
     @server.route('/addon/mainstage')
     def addon_mainstage():
         body = '<span class="badge">LIVE SIGNAL</span>'
         # main stage embeds the dashboard focused on the signal view
-        return Response(_page('mainstage', 'Main Stage', body,
+        return Response(_page('mainstage', 'Live Signal', body,
                               embed_qs='?view=signal'),
                         mimetype='text/html')
 
