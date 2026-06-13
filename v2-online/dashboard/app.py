@@ -156,7 +156,9 @@ def fig_layout(fig, title, xtitle, ytitle):
     return fig
 
 
-app = dash.Dash(__name__, title='SDI FDP Live Dashboard')
+app = dash.Dash(__name__,
+                title='SDI Lab Cloud • Live Workshop Dashboard | '
+                      'Xenith Brand Labs')
 server = app.server   # for cloud hosts (gunicorn) later
 
 # Google Meet Add-on surface (side panel + main stage). Optional —
@@ -176,10 +178,10 @@ app.layout = html.Div([
     # header
     html.Div([
         html.Div([
-            html.Span('5-Day SDI Lab Automation FDP', style={
+            html.Span('SDI Lab Cloud', style={
                 'fontWeight': '800', 'fontSize': '20px'}),
-            html.Span('  •  Live Workshop Dashboard (V2)', style={
-                'fontSize': '15px', 'opacity': .85}),
+            html.Span('  •  Live Workshop Dashboard | Xenith Brand Labs',
+                      style={'fontSize': '15px', 'opacity': .85}),
         ]),
         html.Div([
             html.Span(MODE_BADGE, id='mode-badge', style={
@@ -268,8 +270,8 @@ app.layout = html.Div([
         ], id='right-col', style={'flex': '1'}),
     ], style={'display': 'flex', 'padding': '16px 22px'}),
 
-    html.Div('Spruha Build-in Solutions  |  Powered by Moku:Go — '
-             'Liquid Instruments  •  v2.0',
+    html.Div('SDI Lab Cloud by Xenith Brand Labs  |  Powered by '
+             'Moku:Go — Liquid Instruments  •  v2.0',
              style={'background': BLUE, 'color': 'white',
                     'textAlign': 'center', 'padding': '7px',
                     'fontSize': '12px'}),
