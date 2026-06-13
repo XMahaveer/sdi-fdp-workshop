@@ -58,9 +58,11 @@ Model B/C can layer on later for "real signal" capstone sessions.
    device-rotation queue, trainer code-push, Join-Meet button
 3. ~~Model B runbook~~ DONE — [`MODEL_B_CLOUD_WORKSTATION.md`](MODEL_B_CLOUD_WORKSTATION.md)
 4. ~~Model C runbook~~ DONE — [`MODEL_C_HYBRID.md`](MODEL_C_HYBRID.md)
-5. Google Meet Add-on wrapper (dashboard inside Meet) → NEXT —
-   scaffold in [`meet-addon/`](meet-addon/)
-6. Remote delivery kit (re-timed session plans) → then pilot cohort
+5. ~~Google Meet Add-on wrapper (dashboard inside Meet)~~ BUILT —
+   side-panel + main-stage routes live in `dashboard/meet_addon.py`,
+   config in [`meet-addon/`](meet-addon/); only GCP registration
+   (free, your credentials) remains
+6. Remote delivery kit (re-timed session plans) → NEXT, then pilot cohort
 
 Decisions and progress will be tracked in `docs/CHANGELOG.md` once V2
 development starts.

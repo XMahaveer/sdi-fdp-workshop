@@ -159,6 +159,14 @@ def fig_layout(fig, title, xtitle, ytitle):
 app = dash.Dash(__name__, title='SDI FDP Live Dashboard')
 server = app.server   # for cloud hosts (gunicorn) later
 
+# Google Meet Add-on surface (side panel + main stage). Optional —
+# the dashboard works standalone (companion mode) without it.
+try:
+    import meet_addon
+    meet_addon.register(server)
+except Exception as _e:        # never let the add-on layer break the app
+    print(f'[dashboard] Meet add-on routes not registered: {_e}')
+
 app.layout = html.Div([
     dcc.Location(id='url'),
     dcc.Store(id='me', storage_type='local'),
@@ -257,7 +265,7 @@ app.layout = html.Div([
                     'marginTop': '8px', 'fontSize': '13px',
                     'color': MUTED}),
             ], accent=ORANGE),
-        ], style={'flex': '1'}),
+        ], id='right-col', style={'flex': '1'}),
     ], style={'display': 'flex', 'padding': '16px 22px'}),
 
     html.Div('Spruha Build-in Solutions  |  Powered by Moku:Go — '
@@ -282,6 +290,17 @@ def _is_trainer(search):
 @app.callback(Output('role-label', 'children'), Input('url', 'search'))
 def show_role(search):
     return 'ROLE: TRAINER' if _is_trainer(search) else ''
+
+
+@app.callback(Output('right-col', 'style'), Input('url', 'search'))
+def signal_only_view(search):
+    """Main-stage embed (?view=signal) shows just the live signal —
+    hide the people/device column so the waveform fills the stage."""
+    from urllib.parse import parse_qs
+    q = parse_qs((search or '').lstrip('?'))
+    if q.get('view', [''])[0] == 'signal':
+        return {'display': 'none'}
+    return {'flex': '1'}
 
 
 @app.callback(Output('me', 'data'), Output('me-label', 'children'),

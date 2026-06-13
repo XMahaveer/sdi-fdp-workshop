@@ -17,6 +17,11 @@ All notable changes to the 5-Day SDI Lab Automation FDP are documented here.
   device-rotation queue, trainer code-push, Google Meet companion
   integration (Join-Meet button; Add-on wrapper scaffolded in
   `v2-online/meet-addon/`). Share via free Cloudflare quick tunnel.
+- `v2-online/dashboard/meet_addon.py` + `v2-online/meet-addon/manifest.json`
+  — Google Meet Add-on surface: `/addon/sidepanel`, `/addon/mainstage`
+  (signal-only `?view=signal` layout), `/addon/manifest` routes that
+  dock the dashboard inside Meet via the Add-ons SDK, with graceful
+  standalone fallback. Only a free GCP registration remains.
 - `v2-online/MODEL_B_CLOUD_WORKSTATION.md` and
   `v2-online/MODEL_C_HYBRID.md` — free-tier runbooks for the real-
   hardware delivery models (Chrome Remote Desktop / Tailscale rotation;

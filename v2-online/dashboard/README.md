@@ -47,8 +47,12 @@ python app.py
 and/or participants open the tunnel URL in a second tab; the Join-Meet
 button closes the loop. Zero approval process, free accounts.
 
-**Next (Add-on):** the same app wrapped as a Google Meet Add-on so it
-renders inside Meet's side panel — see [`../meet-addon/README.md`](../meet-addon/README.md).
+**Add-on (built):** `meet_addon.py` adds `/addon/sidepanel`,
+`/addon/mainstage`, and `/addon/manifest` routes that render the
+dashboard *inside* Meet via the Add-ons SDK (main stage uses the
+`?view=signal` signal-only layout). Launch with `PUBLIC_URL=` and
+`GCP_PROJECT_NUMBER=` set; finish with a free GCP registration — see
+[`../meet-addon/README.md`](../meet-addon/README.md).
 
 ## Cloud hosting upgrade (optional, still free)
 

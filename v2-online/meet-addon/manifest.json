@@ -1,0 +1,22 @@
+{
+  "_comment": "Google Workspace Marketplace SDK → Meet Add-on config. Free, unlisted (private FDP needs no Marketplace review). Replace the two placeholders, then register in a free Google Cloud project. The live /addon/manifest route on the running dashboard emits this same JSON with your real origin filled in.",
+  "cloudProjectNumber": "YOUR_GCP_PROJECT_NUMBER",
+  "sdkVersion": "0.9.0  (verify current at developers.google.com/workspace/meet/add-ons)",
+  "meetAddOn": {
+    "displayName": "SDI FDP Live Dashboard",
+    "supportsCollaboration": true,
+    "sidePanelUri": "https://YOUR_PUBLIC_ORIGIN/addon/sidepanel",
+    "mainStageUri": "https://YOUR_PUBLIC_ORIGIN/addon/mainstage",
+    "addOnOrigins": ["https://YOUR_PUBLIC_ORIGIN"],
+    "darkModeLogoUri": "",
+    "logoUri": ""
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/meetings.space.created"
+  ],
+  "notes": {
+    "publicOrigin": "Use a STABLE HTTPS origin (a named Cloudflare tunnel or the free cloud host) — Meet quick-tunnel URLs change per run and would break the manifest.",
+    "envVars": "Set PUBLIC_URL and GCP_PROJECT_NUMBER when launching dashboard/app.py so the add-on pages and /addon/manifest emit the correct absolute URLs.",
+    "browser": "Participants must open Meet on Chrome desktop for add-ons."
+  }
+}
